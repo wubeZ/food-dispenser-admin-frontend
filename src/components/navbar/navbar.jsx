@@ -5,8 +5,7 @@ import './navbar.css';
 const Navbar = () => {
   const navigate = useNavigate();
 
-  const handleLogout = async (event) => {
-    event.preventDefault();
+  const handleLogout = () => {
     localStorage.removeItem('token');
     navigate('/', { replace: true });
   };
