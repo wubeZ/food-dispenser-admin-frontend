@@ -7,7 +7,6 @@ const Navbar = () => {
 
   const handleLogout = () => {
     localStorage.removeItem('token');
-    navigate('/', { replace: true });
   };
 
   return (
@@ -15,7 +14,7 @@ const Navbar = () => {
       <ul>
         <li> <NavLink to="/dashboard" activeClassName="active">Create Device</NavLink> <br/><br></br> </li>
         <li> <NavLink to="/user" activeClassName="active">User Analysis</NavLink> <br/><br></br> </li>
-        <li><Link to="/" onClick={handleLogout}>Logout</Link></li>
+        <li><NavLink to="/login" onClick={handleLogout}>Logout</NavLink></li>
       </ul>
     </nav>
   );
