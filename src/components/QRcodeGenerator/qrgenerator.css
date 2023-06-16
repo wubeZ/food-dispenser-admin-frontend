@@ -1,0 +1,33 @@
+.qrcode-generator-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* height: 100vh; */
+  }
+  
+  .qrcode-generator-heading {
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+  
+  .qrcode-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  
+  .qrcode-download-btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .qrcode-download-btn:hover {
+    background-color: #0056b3;
+  }
+  
