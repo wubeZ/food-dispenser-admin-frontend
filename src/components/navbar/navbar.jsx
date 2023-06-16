@@ -1,15 +1,17 @@
 import React from 'react';
-import { Link, NavLink, Routes, Route } from 'react-router-dom';
+import { Link, NavLink, Routes, Route, useNavigate } from 'react-router-dom';
 import './navbar.css';
 import localforage from 'localforage';
 
-const handleLogout = async () => {
-  await localforage.removeItem('token');
-  window.location.href = '/login';
-};
-
 
 const Navbar = () => {
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    await localforage.removeItem('token');
+    navigate('/login');
+  };
+  
   return (
     <nav>
       <ul>
