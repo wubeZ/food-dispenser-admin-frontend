@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate, useNavigate } from 'react-router-dom';
 import localforage from 'localforage';
-import Login from './components/login/login';
-import Dashboard from './components/dashboard/dashboard';
-import UserDashboard from './components/UserDashboard/userDashboard';
+import Login from './../src/components/login/login';
+import Dashboard from './../src/components/dashboard/dashboard';
+import UserDashboard from './../src/components/UserDashboard/userDashboard';
 
 
 
