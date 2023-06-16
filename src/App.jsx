@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate, useNavigate } from 'react-router-dom';
-import localforage from 'localforage';
 import Login from './components/login/login.jsx';
 import Dashboard from './components/dashboard/dashboard.jsx';
-import UserDashboard from './components/UserDashboard/userdashboard.jsx';
+import UserDashboard from './components/UserDashboard/userDashboard.jsx';
 
 
 
@@ -12,8 +11,7 @@ const App = () => {
 
   useEffect(() => {
     const checkLoginStatus = async () => {
-      // Check if the authentication token exists in local storage
-      const token = await localforage.getItem('token');
+      const token = localStorage.getItem('token');
 
       if (token) {
         setIsAuthenticated(true);

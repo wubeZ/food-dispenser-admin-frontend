@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { FaEyeSlash, FaEye } from 'react-icons/fa';
 import axios from 'axios';
 import { redirect, useNavigate } from 'react-router-dom';
-import localforage from 'localforage';
 import logo1 from '../../assets/logo1.png';
 import './login.css';
 
@@ -77,7 +76,6 @@ const Login = ({ onLogin }) => {
 
       // Save the token to local storage
       localStorage.setItem('token', token);
-      await localforage.setItem('token', token);
       setIsPending(false);
 
       onLogin();

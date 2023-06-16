@@ -1,14 +1,13 @@
 import React from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import './navbar.css';
-import localforage from 'localforage';
 
 const Navbar = () => {
   const navigate = useNavigate();
 
   const handleLogout = async (event) => {
     event.preventDefault();
-    await localforage.removeItem('token');
+    localStorage.removeItem('token');
     navigate('/login');
   };
 

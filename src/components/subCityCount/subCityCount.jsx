@@ -4,7 +4,6 @@ import Chart from 'chart.js/auto';
 import { Bar } from 'react-chartjs-2';
 import axios from 'axios';
 import './subcitycount.css';
-import localforage from 'localforage';
 
 function SubCityCountChart() {
   const [subcityData, setSubcityData] = useState([]);
@@ -19,7 +18,7 @@ function SubCityCountChart() {
     try {
       setLoading(true);
       setError(null);
-      const token = await localforage.getItem('token');
+      const token = localStorage.getItem('token');
       if (!token) {
         window.location.href = '/login';
         return;
@@ -31,8 +30,8 @@ function SubCityCountChart() {
       };
       const response = await axios.get('https://food-dispenser-api.onrender.com/v1/device/subCity', { headers });
       if (response.data.message === 'Unauthorized') {
+        localStorage.removeItem('token');
         window.location.href = '/login';
-        await localforage.removeItem('token');
         return;
       }
       const data = response.data.response;

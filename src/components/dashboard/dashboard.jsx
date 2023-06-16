@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Navbar from '../navbar/navbar';
 import QRCodeGenerator from '../QRcodeGenerator/QRGenrator';
-import localforage from 'localforage';
 import './dashboard.css'
 import { Container, Row, Col, Form, Button, Table, Spinner } from 'react-bootstrap';
 import StatisticCard from '../card/StaticCard';
@@ -28,7 +27,7 @@ const Dashboard = () => {
   
   const fetchDashboardData = async () => {
     try {
-        const token = await localforage.getItem('token');
+        const token = localStorage.getItem('token');
         if (!token) {
           window.location.href = '/login';
           return;
@@ -41,8 +40,8 @@ const Dashboard = () => {
         const response = await axios.get('https://food-dispenser-api.onrender.com/v1/device/dashboard', { headers });
 
         if (response.data.message === 'Unauthorized') {
+          localStorage.removeItem('token');
           window.location.href = '/login';
-          await localforage.removeItem('token');
           return;
         }
         
@@ -72,7 +71,7 @@ const Dashboard = () => {
 
 
   const handleCreateDevice = async (deviceName, capacity) => {
-    const token = await localforage.getItem('token');
+    const token = localStorage.getItem('token');
     if (!token) {
       window.location.href = '/login';
       return;
@@ -94,8 +93,8 @@ const Dashboard = () => {
       );
 
       if (response.data.message === 'Unauthorized') {
+        localStorage.removeItem('token');
         window.location.href = '/login';
-        await localforage.removeItem('token');
         return;
       }
 
@@ -109,7 +108,7 @@ const Dashboard = () => {
 
 
   const handleDeleteDevice = async (deviceId) => {
-    const token = await localforage.getItem('token');
+    const token = localStorage.getItem('token');
     if (!token) {
       window.location.href = '/login';
       return;
@@ -123,8 +122,8 @@ const Dashboard = () => {
     try {
       const response = await axios.delete(`https://food-dispenser-api.onrender.com/v1/device/${deviceId}`, { headers });
       if (response.data.message === 'Unauthorized') {
+        localStorage.removeItem('token');
         window.location.href = '/login';
-        await localforage.removeItem('token');
         return;
       }
       fetchDashboardData();
