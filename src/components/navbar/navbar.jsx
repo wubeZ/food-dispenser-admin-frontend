@@ -8,7 +8,7 @@ const Navbar = () => {
   const handleLogout = async (event) => {
     event.preventDefault();
     localStorage.removeItem('token');
-    navigate('/login');
+    navigate('/login', { replace: true });
   };
 
   return (
