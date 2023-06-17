@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Route, Routes, Navigate, useNavigate } from 'r
 import Login from './components/login/login.jsx';
 import Dashboard from './components/dashboard/dashboard.jsx';
 import UserDashboard from './components/UserDashboards/userDashboard.jsx';
+import Feedback from './components/feedback/Feedback.jsx';
+import './App.css';
 
 
 
@@ -30,6 +32,7 @@ const App = () => {
       <Route path="/" element= {!isAuthenticated ? <Login onLogin={handleLogin} /> : <Navigate to="/dashboard"/> } />
       <Route path="/dashboard" element={isAuthenticated ? <Dashboard /> : <Navigate to="/" />} />
       <Route path="/user" element={isAuthenticated ? <UserDashboard /> : <Navigate to="/" />} />
+      <Route path="/feedback" element={isAuthenticated ? <Feedback /> : <Navigate to="/" />} />
     </Routes>
   );
 };
