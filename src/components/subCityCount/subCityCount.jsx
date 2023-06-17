@@ -20,7 +20,7 @@ function SubCityCountChart() {
       setError(null);
       const token = localStorage.getItem('token');
       if (!token) {
-        window.location.href = '/login';
+        window.location.href = '/';
         return;
       }
       const headers = {
@@ -31,7 +31,7 @@ function SubCityCountChart() {
       const response = await axios.get('https://food-dispenser-api.onrender.com/v1/device/subCity', { headers });
       if (response.data.message === 'Unauthorized') {
         localStorage.removeItem('token');
-        window.location.href = '/login';
+        window.location.href = '/';
         return;
       }
       const data = response.data.response;

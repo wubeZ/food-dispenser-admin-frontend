@@ -29,7 +29,7 @@ const Dashboard = () => {
     try {
         const token = localStorage.getItem('token');
         if (!token) {
-          window.location.href = '/login';
+          window.location.href = '/';
           return;
         }
         const headers = {
@@ -41,7 +41,7 @@ const Dashboard = () => {
 
         if (response.data.message === 'Unauthorized') {
           localStorage.removeItem('token');
-          window.location.href = '/login';
+          window.location.href = '/';
           return;
         }
         
@@ -73,7 +73,7 @@ const Dashboard = () => {
   const handleCreateDevice = async (deviceName, capacity) => {
     const token = localStorage.getItem('token');
     if (!token) {
-      window.location.href = '/login';
+      window.location.href = '/';
       return;
     }
     const headers = {
@@ -94,7 +94,7 @@ const Dashboard = () => {
 
       if (response.data.message === 'Unauthorized') {
         localStorage.removeItem('token');
-        window.location.href = '/login';
+        window.location.href = '/';
         return;
       }
 
@@ -110,7 +110,7 @@ const Dashboard = () => {
   const handleDeleteDevice = async (deviceId) => {
     const token = localStorage.getItem('token');
     if (!token) {
-      window.location.href = '/login';
+      window.location.href = '/';
       return;
     }
     const headers = {
@@ -123,7 +123,7 @@ const Dashboard = () => {
       const response = await axios.delete(`https://food-dispenser-api.onrender.com/v1/device/${deviceId}`, { headers });
       if (response.data.message === 'Unauthorized') {
         localStorage.removeItem('token');
-        window.location.href = '/login';
+        window.location.href = '/';
         return;
       }
       fetchDashboardData();

@@ -28,9 +28,8 @@ const App = () => {
   return (
     <Routes>
       <Route path="/" element= {!isAuthenticated ? <Login onLogin={handleLogin} /> : <Navigate to="/dashboard"/> } />
-      <Route path="/login" element= {!isAuthenticated ? <Login onLogin={handleLogin} /> : <Navigate to="/dashboard"/> } />
-      <Route path="/dashboard" element={isAuthenticated ? <Dashboard /> : <Navigate to="/login" />} />
-      <Route path="/user" element={isAuthenticated ? <UserDashboard /> : <Navigate to="/login" />} />
+      <Route path="/dashboard" element={isAuthenticated ? <Dashboard /> : <Navigate to="/" />} />
+      <Route path="/user" element={isAuthenticated ? <UserDashboard /> : <Navigate to="/" />} />
     </Routes>
   );
 };
