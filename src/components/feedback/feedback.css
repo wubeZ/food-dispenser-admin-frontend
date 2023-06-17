@@ -1,0 +1,41 @@
+h1 {
+margin-top: 30px;
+margin-bottom: 30px;
+margin-left: 30px;
+}
+
+.tablecenter {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .navButton {
+    display: flex;
+    justify-content: right;
+    margin-bottom: 20px;
+  }
+  
+  .navButton button {
+    background-color: #476594;
+    border: none;
+    padding: 6px 10px;
+    margin-right: 30px;
+    color: #cdcdcd;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .navButton button.active {
+    font-weight: bold;
+    text-decoration: underline;
+    background-color: #25292e;
+    color: #b4ddc2;
+  }
+
+  
+  .navButton button:hover {
+    color: #637e6c;
+    background-color: #272a28;
+  }
+  
