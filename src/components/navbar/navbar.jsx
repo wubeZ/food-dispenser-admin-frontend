@@ -14,7 +14,11 @@ const Navbar = () => {
       <ul>
         <li> <NavLink to="/dashboard" activeClassName="active">Create Device</NavLink> <br/><br></br> </li>
         <li> <NavLink to="/user" activeClassName="active">User Analysis</NavLink> <br/><br></br> </li>
-        <li><NavLink to="/login" onClick={handleLogout}>Logout</NavLink></li>
+        <li> <NavLink to="/login">
+          <button onClick={handleLogout}>
+            Logout
+          </button>
+          </NavLink></li>
       </ul>
     </nav>
   );
