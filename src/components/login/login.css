@@ -65,7 +65,12 @@
   
 }
 
-
+.errorMessage{
+  color: red;
+  font-size: 14px;
+  margin-bottom: 10px;
+  margin-top: -10px;
+}
 
 
 .login-form input:focus {

@@ -85,7 +85,7 @@ const Login = ({ onLogin }) => {
     } catch (error) {
       // Handle the login error
       if (error.response && error.response.data) {
-        setErrorMessage(error.response.data.error);
+        setErrorMessage(error.response.data.message);
       } else {
         setErrorMessage('An error occurred during login.');
       }
@@ -102,7 +102,7 @@ const Login = ({ onLogin }) => {
         </div>
         <div className="login-form">
           <h2>Login</h2>
-          {errorMessage && <p>{errorMessage}</p>}
+          {errorMessage && <p className='errorMessage'>Error : {errorMessage}</p>}
           <form onSubmit={handleSubmit}>
             <div>
               <label htmlFor="email">Email / Phone Number </label>
