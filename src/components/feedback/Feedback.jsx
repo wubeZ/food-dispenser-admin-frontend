@@ -87,6 +87,42 @@ const Feedback = () => {
         }
     };
 
+
+    function getStarRating(rating) {
+        rating = Number(rating);
+        console.log("rating is ", rating);
+        const filledStar = '<span class="star-filled">&#9733;</span>';
+        const emptyStar = '<span class="star-empty">&#9733;</span>';
+      
+        let stars = "";
+        for (let i = 0; i < rating; i++) {
+          stars += filledStar; // add a filled star
+        }
+        for (let i = rating; i < 5; i++) {
+          stars += emptyStar; // add an empty star
+        }
+      
+        return `<div class="star-rating">
+                  <style>
+                    .star-rating {
+                      display: inline-block;
+                      font-size: 1.5rem;
+                      color: #f5c518;
+                      text-shadow: 1px 1px #444;
+                    }
+                    .star-filled {
+                      color: #f5c518;
+                    }
+                    .star-empty {
+                      color: #ccc;
+                    }
+                  </style>
+                  ${stars}
+                </div>`;
+      }
+
+
+
     const pendingfeedback = !feedbackData ? {} : feedbackData.filter(feedback => feedback.status === 'pending');
     const approvedfeedback = !feedbackData ? {} : feedbackData.filter(feedback => feedback.status === 'approved');
 
@@ -132,7 +168,7 @@ const Feedback = () => {
                                     <td>{feedback.user.full_name}</td>
                                     <td>{feedback.device._id}</td>
                                     <td>{feedback.feedback}</td>
-                                    <td>{feedback.rating}</td>
+                                    <td> <div dangerouslySetInnerHTML={{ __html: getStarRating(feedback.rating) }}></div> </td>
                                     <td> {feedback.status} </td>
                                     </tr>
                                 )) ) :
@@ -148,7 +184,7 @@ const Feedback = () => {
                                         <td>{feedback.user.full_name}</td>
                                         <td>{feedback.device._id}</td>
                                         <td>{feedback.feedback}</td>
-                                        <td>{feedback.rating}</td>
+                                        <td> <div dangerouslySetInnerHTML={{ __html: getStarRating(feedback.rating) }}></div> </td>
                                         <td> {feedback.status} </td>
                                         <td>
                                             {loading ? <Button variant="outline-primary" disabled> Approving... </Button> : <Button variant="outline-primary" onClick={() => {handleUpdate(feedback._id, 'approved')}}> Approve </Button> } </td> 
@@ -165,7 +201,7 @@ const Feedback = () => {
                                             <td>{feedback.user.full_name}</td>
                                             <td>{feedback.device._id}</td>
                                             <td>{feedback.feedback}</td>
-                                            <td>{feedback.rating}</td>
+                                            <td> <div dangerouslySetInnerHTML={{ __html: getStarRating(feedback.rating) }}></div> </td>
                                             <td> {feedback.status} </td>
                                             </tr>
                                         ))   
