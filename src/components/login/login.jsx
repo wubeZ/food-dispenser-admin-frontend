@@ -20,6 +20,7 @@ const Login = ({ onLogin }) => {
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
+    setErrorMessage('');
   };
 
 
@@ -29,6 +30,7 @@ const Login = ({ onLogin }) => {
 
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
+    setErrorMessage('');
   };
 
   const validate = () => {
